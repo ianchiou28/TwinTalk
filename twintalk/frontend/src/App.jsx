@@ -144,6 +144,7 @@ export default function App() {
           onUnreadChange={setTotalUnread}
           pendingDmTargetId={pendingDmTargetId}
           onDmStarted={() => setPendingDmTargetId(null)}
+          isActive={drawerOpen}
         />
       </div>
 

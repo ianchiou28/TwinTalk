@@ -296,7 +296,7 @@ function DmChat({
 }
 
 /* ── World (DM Inbox only — no more seg-control) ─────── */
-export default function World({ setHideNav, showToast, onUnreadChange, pendingDmTargetId, onDmStarted }) {
+export default function World({ setHideNav, showToast, onUnreadChange, pendingDmTargetId, onDmStarted, isActive }) {
   const [conversations, setConversations] = useState([])
   const [currentConversation, setCurrentConversation] = useState(null)
   const [messages, setMessages] = useState([])
@@ -351,6 +351,13 @@ export default function World({ setHideNav, showToast, onUnreadChange, pendingDm
       if (updated) setCurrentConversation(updated)
     }
   }
+
+  // Refresh conversations when drawer opens so data is never stale
+  useEffect(() => {
+    if (isActive) {
+      refreshConversations(false).catch(console.error)
+    }
+  }, [isActive])
 
   const openConversation = async (conv) => {
     setCurrentConversation(conv)
