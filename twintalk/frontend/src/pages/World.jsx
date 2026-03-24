@@ -76,8 +76,8 @@ function DmInbox({
       <div className="dm-inbox-list">
         {sorted.length === 0 ? (
           <div className="empty-state">
-            <span className="empty-icon">✉️</span>
-            <h3>{conversations.length === 0 ? '还没有私信' : '没有匹配结果'}</h3>
+            <span className="empty-icon">-</span>
+            <h3>{conversations.length === 0 ? '没有私信' : '没有匹配结果'}</h3>
             <p>{conversations.length === 0
               ? '去首页推荐用户页面发起第一次私信吧！'
               : '试试更换关键词，或清空搜索。'}</p>
@@ -96,7 +96,7 @@ function DmInbox({
                   <div className="dm-inbox-avatar">{getAvatarLabel(name)}</div>
                   <div className="dm-inbox-body">
                     <div className="dm-inbox-row dm-inbox-row-top">
-                      <strong>{name}{isPinned ? ' 📌' : ''}</strong>
+                      <strong>{name}{isPinned ? ' [置顶]' : ''}</strong>
                       <span className="dm-inbox-time">{formatTime(conv.last_message_at)}</span>
                     </div>
                     <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginTop: '4px' }}>
@@ -116,7 +116,7 @@ function DmInbox({
                     onClick={() => onTogglePinConversation(conv.id)}
                     type="button"
                   >
-                    {isPinned ? '📌 已置顶' : '置顶'}
+                    {isPinned ? '已置顶' : '置顶'}
                   </button>
                   <button
                     className="btn btn-sm btn-ghost"
@@ -211,16 +211,7 @@ function DmChat({
       <div className="dm-chat-input-bar">
         {/* Emoji row */}
         <div className="dm-emoji-row">
-          {['🙂', '😂', '👍', '❤️', '🔥', '👏'].map((emoji) => (
-            <button
-              key={emoji}
-              className="dm-emoji-btn"
-              onClick={() => setInput((prev) => `${prev}${emoji}`)}
-              type="button"
-            >
-              {emoji}
-            </button>
-          ))}
+          {/* Emojis removed */}
         </div>
 
         {/* Text + send */}
@@ -276,7 +267,7 @@ function DmChat({
             onClick={onSuggest}
             disabled={suggesting}
           >
-            {suggesting ? '生成中...' : '💡 建议'}
+            {suggesting ? '生成中...' : '建议'}
           </button>
           {suggestion && (
             <button
@@ -295,7 +286,7 @@ function DmChat({
             onClick={onStartAgentChat}
             disabled={agentChatting}
           >
-             {agentChatting ? '🤖 Agent 正在沟通中...' : '🤖 开始 Agent 自动对谈并生成报告'}
+             {agentChatting ? 'Agent 正在沟通中...' : '开始 Agent 自动对谈并生成报告'}
           </button>
         </div>
 

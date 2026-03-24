@@ -101,7 +101,7 @@ function LoginStep({ onDone }) {
           <button className="btn btn-primary btn-lg" type="submit" disabled={loading} style={{ width: '100%' }}>
             {loading
               ? <span className="loading-dots"><span /><span /><span /></span>
-              : tab === 'register' ? '注册并开始 →' : '登录 →'}
+              : tab === 'register' ? '注册并开始' : '登录'}
           </button>
         </form>
         <p style={{ marginTop: '24px', fontSize: '13px', color: 'var(--text-muted)' }}>
@@ -254,7 +254,7 @@ function QuestionnaireStep({ user, onDone }) {
                     onClick={() => setAnswer(choice)}
                     style={{ textAlign: 'left', justifyContent: 'flex-start' }}
                   >
-                    {currentAnswer === choice && '✓ '}{choice}
+                    {currentAnswer === choice && '• '}{choice}
                   </button>
                 ))}
               </div>
@@ -286,7 +286,7 @@ function QuestionnaireStep({ user, onDone }) {
         <div style={{ display: 'flex', gap: '12px', marginTop: '28px' }}>
           {current > 0 && (
             <button className="btn btn-ghost" onClick={() => setCurrent((c) => c - 1)}>
-              ← 上一题
+              上一题
             </button>
           )}
           <button
@@ -297,7 +297,7 @@ function QuestionnaireStep({ user, onDone }) {
           >
             {submitting
               ? <span className="loading-dots"><span /><span /><span /></span>
-              : current === questions.length - 1 ? '完成' : '下一题 →'}
+              : current === questions.length - 1 ? '完成' : '下一题'}
           </button>
         </div>
       </div>

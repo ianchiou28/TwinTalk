@@ -50,13 +50,13 @@ function SafeReportDetail({ report, onBack, onDelete }) {
 
       {/* Gradient header */}
       <div className="report-detail-header">
-        <div className="report-detail-emoji">📊</div>
+        <div className="report-detail-emoji">-</div>
         <h2 className="report-detail-title">{title}</h2>
         <div className="report-detail-participants">
           <span className="report-participant-chip">
             {report.owner_nickname || '某人'}
           </span>
-          <span className="report-vs">✦</span>
+          <span className="report-vs">|</span>
           <span className="report-participant-chip">
             {report.partner_nickname || '某人'}
           </span>
@@ -70,7 +70,7 @@ function SafeReportDetail({ report, onBack, onDelete }) {
       {summary ? (
         <div className="report-section">
           <div className="report-section-header">
-            <span className="report-section-icon">💬</span>
+            <span className="report-section-icon">-</span>
             <h3>总体总结</h3>
           </div>
           <p className="report-section-text">{summary}</p>
@@ -78,7 +78,7 @@ function SafeReportDetail({ report, onBack, onDelete }) {
       ) : (
         <div className="report-section">
           <div className="report-section-header">
-            <span className="report-section-icon">⏳</span>
+            <span className="report-section-icon">-</span>
             <h3>报告内容</h3>
           </div>
           <p className="report-section-text" style={{ color: 'var(--c-text-secondary)' }}>
@@ -91,7 +91,7 @@ function SafeReportDetail({ report, onBack, onDelete }) {
       {commonGround.length > 0 && (
         <div className="report-section">
           <div className="report-section-header">
-            <span className="report-section-icon">🤝</span>
+            <span className="report-section-icon">+</span>
             <h3>发现共同点</h3>
           </div>
           <ul className="report-tag-list">
@@ -106,7 +106,7 @@ function SafeReportDetail({ report, onBack, onDelete }) {
       {divergence.length > 0 && (
         <div className="report-section">
           <div className="report-section-header">
-            <span className="report-section-icon">⚡</span>
+            <span className="report-section-icon">!</span>
             <h3>视角分歧</h3>
           </div>
           <ul className="report-tag-list">
@@ -121,7 +121,7 @@ function SafeReportDetail({ report, onBack, onDelete }) {
       {highlights.length > 0 && (
         <div className="report-section">
           <div className="report-section-header">
-            <span className="report-section-icon">✨</span>
+            <span className="report-section-icon">*</span>
             <h3>金句摘录</h3>
           </div>
           <div className="report-quotes">
@@ -136,7 +136,7 @@ function SafeReportDetail({ report, onBack, onDelete }) {
       {matchAnalysis && (
         <div className="report-section report-section-match">
           <div className="report-section-header">
-            <span className="report-section-icon">💡</span>
+            <span className="report-section-icon">#</span>
             <h3>匹配度评价</h3>
           </div>
           <p className="report-match-text">{matchAnalysis}</p>
@@ -197,7 +197,7 @@ export default function Report({ isActive }) {
     return (
       <div className="report-list-page">
         <div className="report-error">
-          <span>⚠️</span>
+          <span>!</span>
           <p>报告渲染出错: {renderError}</p>
           <button className="btn btn-primary btn-sm" onClick={() => {
             setRenderError(null)
@@ -228,7 +228,7 @@ export default function Report({ isActive }) {
     <div className="report-list-page">
       {/* Page header */}
       <div className="report-page-header">
-        <div className="report-page-header-icon">📋</div>
+        <div className="report-page-header-icon">-</div>
         <div>
           <h2 className="report-page-title">Agent 对谈报告</h2>
           <p className="report-page-subtitle">AI 孪生体自主对话的深度分析</p>
@@ -242,13 +242,13 @@ export default function Report({ isActive }) {
         </div>
       ) : error ? (
         <div className="report-error">
-          <span>⚠️</span>
+          <span>!</span>
           <p>加载失败: {error}</p>
           <button className="btn btn-primary btn-sm" onClick={fetchReports}>重试</button>
         </div>
       ) : reports.length === 0 ? (
         <div className="report-empty">
-          <div className="report-empty-icon">📝</div>
+          <div className="report-empty-icon">-</div>
           <h3>暂无报告</h3>
           <p>在首页推荐用户卡片上点击「Agent对谈」，<br/>让两个 AI 孪生体自由聊天并生成分析报告！</p>
         </div>
@@ -289,7 +289,7 @@ export default function Report({ isActive }) {
                 >
                   <TrashIcon />
                 </button>
-                <div className="report-list-card-arrow">›</div>
+                <div className="report-list-card-arrow">></div>
               </button>
             )
           })}
